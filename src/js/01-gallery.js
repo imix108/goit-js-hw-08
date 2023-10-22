@@ -1,9 +1,11 @@
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import { galleryItems } from './gallery-items';
-import { galleryItems } from './gallery-items.js';
 
 const list = document.querySelector('.gallery');
+
+list.style.listStyle = 'none';
+
 
 function renderList(images) {
   const markup = images.map(({ preview, original, description }) => {
@@ -26,3 +28,4 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250, 
 });
 console.log(galleryItems);
+
