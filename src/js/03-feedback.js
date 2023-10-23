@@ -32,16 +32,22 @@ loadFormState();
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  
- 
-  localStorage.removeItem(storageKey);
-  
-  const formData = {
-    email: emailInput.value,
-    message: messageTextarea.value,
-  };
-  console.log('Form Data:', formData);
-  
-  emailInput.value = '';
-  messageTextarea.value = '';
+
+  // Проверяем, что оба поля не пустые
+  if (emailInput.value !== '' && messageTextarea.value !== '') {
+    // Если оба поля не пустые, удаляем сохраненное состояние из localStorage
+    localStorage.removeItem(storageKey);
+
+    const formData = {
+      email: emailInput.value,
+      message: messageTextarea.value,
+    };
+    console.log('Form Data:', formData);
+
+    // Очищаем поля формы
+    emailInput.value = '';
+    messageTextarea.value = '';
+  } else {
+    alert('Будь ласка заповніть обидві форми перед відправкою форми.');
+  }
 });
